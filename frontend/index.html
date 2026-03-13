@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mandala Jenith Portfolio</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    transition: 0.3s;
+}
+
+header {
+    padding: 20px;
+    text-align: center;
+    background: #2c3e50;
+    color: white;
+}
+
+.info {
+    margin-top: 10px;
+}
+
+.container {
+    padding: 20px;
+}
+
+h2 {
+    text-align: center;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.card {
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    transition: 0.3s;
+}
+
+.card:hover {
+    transform: scale(1.05);
+}
+
+img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.card p {
+    padding: 10px;
+    text-align: center;
+}
+
+/* Contact Form */
+form {
+    max-width: 400px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+input, textarea, button {
+    padding: 10px;
+    font-size: 14px;
+}
+
+button {
+    background: #2c3e50;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #34495e;
+}
+
+/* Dark mode */
+.dark {
+    background: #121212;
+    color: white;
+}
+
+.dark header {
+    background: #000;
+}
+
+.toggle {
+    margin-top: 10px;
+    cursor: pointer;
+    padding: 5px 10px;
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>Mandala Jenith</h1>
+    <div class="info">
+        📍 [Bangalore, Karnataka] <br>
+        📞 9739982510
+    </div>
+    <button class="toggle" onclick="toggleTheme()">Toggle Theme</button>
+</header>
+
+<div class="container">
+    <h2>My Certificates</h2>
+
+    <div class="grid">
+        <div class="card"><img src="cer1.pdf"><p>Certificate 1</p></div>
+        <div class="card"><img src="cer2.pdf"><p>Certificate 2</p></div>
+        <div class="card"><img src="cer3.pdf"><p>Certificate 3</p></div>
+        <div class="card"><img src="cer4.pdf"><p>Certificate 4</p></div>
+        <div class="card"><img src="cer5.pdf"><p>Certificate 5</p></div>
+        <div class="card"><img src="cer6.pdf"><p>Certificate 6</p></div>
+        <div class="card"><img src="cer7.pdf"><p>Certificate 7</p></div>
+    </div>
+</div>
+
+<div class="container">
+    <h2>Contact Me</h2>
+
+    <form id="contactForm">
+        <input type="text" placeholder="Your Name" required>
+        <input type="email" placeholder="Your Email" required>
+        <textarea placeholder="Your Message" required></textarea>
+        <button type="submit">Send</button>
+    </form>
+</div>
+
+<script>
+// 🌙 Theme toggle
+function toggleTheme() {
+    document.body.classList.toggle("dark");
+}
+
+// 🔗 Connect to backend
+document.getElementById("contactForm").addEventListener("submit", async function(e){
+    e.preventDefault();
+
+    const name = this[0].value;
+    const email = this[1].value;
+    const message = this[2].value;
+
+    try {
+        const response = await fetch("http://localhost:3000/contact", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({ name, email, message })
+        });
+
+        const data = await response.text();
+        alert(data);
+
+        // Clear form after submit
+        this.reset();
+
+    } catch (error) {
+        alert("❌ Cannot connect to backend");
+        console.log(error);
+    }
+});
+</script>
+
+</body>
+</html> 
