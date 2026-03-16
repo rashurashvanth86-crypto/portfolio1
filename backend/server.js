@@ -9,9 +9,15 @@ app.use(cors());
 app.use(express.json());
 
 // MongoDB connection
-mongoose.connect("mongodb+srv://jenithdatabase:<200706>@cluster1.s9lmhie.mongodb.net/")
+mongoose.connect("mongodb+srv://jenithdatabase:200706@cluster1.s9lmhie.mongodb.net/portfolioDB")
 .then(() => console.log("Database Connected"))
 .catch((err) => console.log(err));
+
+
+// Root route (to test server)
+app.get("/", (req, res) => {
+  res.send("Backend server is running");
+});
 
 
 // Schema
@@ -40,22 +46,23 @@ app.post("/contact", async (req, res) => {
     res.json({ success: true, message: "Message saved successfully" });
 
   } catch (error) {
-    res.json({ success: false, message: "Error saving message" });
+    res.status(500).json({ success: false, message: "Error saving message" });
   }
 });
 
 
 // API to get messages
 app.get("/messages", async (req, res) => {
-
-  const messages = await Message.find();
-
-  res.json(messages);
-
+  try {
+    const messages = await Message.find();
+    res.json(messages);
+  } catch (error) {
+    res.status(500).json({ message: "Error fetching messages" });
+  }
 });
 
 
 // Server
-app.listen(5000, () => {
-  console.log("Server running on port 5000");
+app.listen(3000, () => {
+  console.log("Server running on port 3000");
 });
