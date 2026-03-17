@@ -1,74 +1,33 @@
-console.log("🚀 App starting...");
+document.getElementById("contactForm").addEventListener("submit", async function(e) {
 
-const express = require("express");
-const mongoose = require("mongoose");
-const cors = require("cors");
+  e.preventDefault();
 
-const app = express();
-
-// Middleware
-app.use(cors());
-app.use(express.json());
-
-// MongoDB connection
-mongoose.connect("mongodb+srv://jenithdatabase:200706@cluster1.s9lmhie.mongodb.net/portfolioDB")
-.then(() => console.log("✅ Database Connected"))
-.catch((err) => console.log("❌ DB Error:", err));
-
-// Root route (to test server)
-app.get("/", (req, res) => {
-  res.send("Backend server is running");
-});
-
-// Schema
-const messageSchema = new mongoose.Schema({
-  name: String,
-  email: String,
-  message: String
-});
-
-// Model
-const Message = mongoose.model("Message", messageSchema);
-
-// API to save message
-app.post("/contact", async (req, res) => {
-  console.log("📩 Incoming message:", req.body);
+  const name = document.getElementById("name").value;
+  const email = document.getElementById("email").value;
+  const message = document.getElementById("message").value;
 
   try {
-    const newMessage = new Message({
-      name: req.body.name,
-      email: req.body.email,
-      message: req.body.message
+
+    const response = await fetch("https://porftolio-mk8b.onrender.com/contact", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({ name, email, message })
     });
 
-    await newMessage.save();
+    const data = await response.json();
 
-    console.log("✅ Message saved");
-
-    res.json({ success: true, message: "Message saved successfully" });
+    if (data.success) {
+      document.getElementById("status").innerText = "Message Sent Successfully!";
+      document.getElementById("contactForm").reset();
+    } else {
+      document.getElementById("status").innerText = "Failed to send message.";
+    }
 
   } catch (error) {
-    console.log("❌ Error saving message:", error);
-    res.status(500).json({ success: false, message: "Error saving message" });
+    document.getElementById("status").innerText = "Server error.";
+    console.log(error);
   }
-});
 
-// API to get messages
-app.get("/messages", async (req, res) => {
-  console.log("📥 Fetching messages...");
-
-  try {
-    const messages = await Message.find();
-    res.json(messages);
-  } catch (error) {
-    console.log("❌ Error fetching messages:", error);
-    res.status(500).json({ message: "Error fetching messages" });
-  }
-});
-
-// Server
-const PORT = process.env.PORT || 3000;
-
-app.listen(PORT, () => {
-  console.log(`🔥 Server running on port ${PORT}`);
 });

@@ -8,7 +8,7 @@ document.getElementById("contactForm").addEventListener("submit", async function
 
   try {
 
-    const response = await fetch("http://localhost:3000/contact", {
+    const response = await fetch("https://porftolio-mk8b.onrender.com/contact"), {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
