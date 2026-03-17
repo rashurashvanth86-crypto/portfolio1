@@ -1,33 +1,19 @@
-document.getElementById("contactForm").addEventListener("submit", async function(e) {
+console.log("🚀 App starting...");
 
-  e.preventDefault();
+const express = require("express");
+const mongoose = require("mongoose");
+const cors = require("cors");
 
-  const name = document.getElementById("name").value;
-  const email = document.getElementById("email").value;
-  const message = document.getElementById("message").value;
+const app = express();
 
-  try {
+app.use(cors());
+app.use(express.json());
 
-    const response = await fetch("https://porftolio-mk8b.onrender.com/contact", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({ name, email, message })
-    });
+app.post("/contact", (req, res) => {
+  console.log(req.body);
+  res.json({ success: true });
+});
 
-    const data = await response.json();
-
-    if (data.success) {
-      document.getElementById("status").innerText = "Message Sent Successfully!";
-      document.getElementById("contactForm").reset();
-    } else {
-      document.getElementById("status").innerText = "Failed to send message.";
-    }
-
-  } catch (error) {
-    document.getElementById("status").innerText = "Server error.";
-    console.log(error);
-  }
-
+app.listen(10000, () => {
+  console.log("🔥 Server running on port 10000");
 });
