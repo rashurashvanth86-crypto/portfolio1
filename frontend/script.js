@@ -8,7 +8,7 @@ document.getElementById("contactForm").addEventListener("submit", async function
 
   try {
 
-    const response = await fetch("https://porftolio-mk8b.onrender.com/contact", {
+    const response = await fetch("https://portfolio-fks1.onrender.com", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
