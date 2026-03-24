@@ -1,5 +1,4 @@
 document.getElementById("contactForm").addEventListener("submit", async function(e) {
-
   e.preventDefault();
 
   const name = document.getElementById("name").value;
@@ -7,8 +6,7 @@ document.getElementById("contactForm").addEventListener("submit", async function
   const message = document.getElementById("message").value;
 
   try {
-
-    const response = await fetch("https://portfolio-fks1.onrender.com", {
+    const response = await fetch("https://portfolio-fks1.onrender.com/contact", { // <-- corrected endpoint
       method: "POST",
       headers: {
         "Content-Type": "application/json"
@@ -24,10 +22,8 @@ document.getElementById("contactForm").addEventListener("submit", async function
     } else {
       document.getElementById("status").innerText = "Failed to send message.";
     }
-
   } catch (error) {
     document.getElementById("status").innerText = "Server error.";
     console.log(error);
   }
-
 });
