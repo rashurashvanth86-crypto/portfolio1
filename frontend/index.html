@@ -1,55 +1,49 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>Mandala Jenith Portfolio</title>
-<link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rashvanth Portfolio</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
 <header>
-<h1>Rashvanth</h1>
-<p>Welcome to my portfolio</p>
+  <h1>Rashvanth</h1>
+  <p>Welcome to my portfolio</p>
 </header>
 
 <section class="about">
-<h2>About Me</h2>
-<p>Name: rashvanth </p>
-<p>Phone: 8951521019</p>
-<p>Email: rashurashvanth86@gmail.com</p>
+  <h2>About Me</h2>
+  <p><strong>Name:</strong> Rashvanth</p>
 </section>
 
-<section>
-<h2>Languages I Know</h2>
-<ul>
-<li>Telugu</li>
-<li>English</li>
-<li>Hindi</li>
-<li>Tamil</li>
-<li>Kannada</li>
-</ul>
+<section class="languages">
+  <h2>Languages I Know</h2>
+  <ul>
+    <li>Telugu</li>
+    <li>English</li>
+    <li>Hindi</li>
+    <li>Tamil</li>
+    <li>Kannada</li>
+  </ul>
 </section>
 
+<section class="contact">
+  <h2>Contact Me</h2>
 
+  <form id="contactForm">
+    <input type="text" id="name" placeholder="Your Name" required>
+    <br>
+    <input type="email" id="email" placeholder="Your Email" required>
+    <br>
+    <textarea id="message" placeholder="Your Message" required></textarea>
+    <br>
+    <button type="submit">Send Message</button>
+  </form>
 
-<section>
-<h2>Contact Me</h2>
-
-<form id="contactForm">
-
-<input type="text" id="name" placeholder="Your Name" required>
-<br>
-
-<input type="email" id="email" placeholder="Your Email" required>
-<br>
-
-<textarea id="message" placeholder="Your Message"></textarea>
-<br>
-
-<button type="submit">Send Message</button>
-
-</form>
-<p id="status"></p>
+  <p id="status"></p>
 </section>
 
 <script src="script.js"></script>
