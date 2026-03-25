@@ -1,7 +1,7 @@
 /* General body styling */
 body {
   font-family: 'Arial', sans-serif;
-  background: linear-gradient(135deg, #ff0073, #982929);
+  background: red(135deg, #ff0073, #982929);
   color: white;
   text-align: center;
   margin: 0;
