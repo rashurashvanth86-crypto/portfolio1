@@ -1,20 +1,24 @@
-name: Deploy Portfolio Website
+steps:
+  - name: Checkout code
+    uses: actions/checkout@v3
 
-on:
-  push:
-    branches:
-      - main
+  - name: Setup Node.js
+    uses: actions/setup-node@v3
+    with:
+      node-version: 18
 
-jobs:
-  deploy:
-    runs-on: ubuntu-latest
+  - name: Install dependencies
+    run: |
+      cd frontend
+      npm install
 
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
+  - name: Build project
+    run: |
+      cd frontend
+      npm run build
 
-      - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./frontend
+  - name: Deploy to GitHub Pages
+    uses: peaceiris/actions-gh-pages@v3
+    with:
+      github_token: ${{ secrets.GITHUB_TOKEN }}
+      publish_dir: ./frontend/dist   # or build (depends on your framework)
