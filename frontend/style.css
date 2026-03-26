@@ -55,7 +55,7 @@ button {
 button:hover {
   background: #2eb10e;
   transform: scale(1.05);
-  color: white;
+  color: rgb(54, 8, 163);
 }
 
 /* Headings styling */
