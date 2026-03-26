@@ -1,7 +1,11 @@
 /* General body styling */
 body {
   font-family: 'Arial', sans-serif;
+<<<<<<< HEAD
   background: linear-gradient(135deg, rgb(23, 163, 206), #33a592);
+=======
+  background: red(135deg, #ff0073, #982929);
+>>>>>>> c346816a464297ad66e0e1e6949d0e9c7782c901
   color: white;
   text-align: center;
   margin: 0;
