@@ -1,7 +1,7 @@
 /* General body styling */
 body {
   font-family: 'Arial', sans-serif;
-  background: linear-gradient(135deg, #ff0073, #982929);
+  background: linear-gradient(135deg, rgb(23, 163, 206), #33a592);
   color: white;
   text-align: center;
   margin: 0;
@@ -13,7 +13,7 @@ section {
   margin: 40px auto;
   padding: 30px;
   max-width: 600px;
-  background: rgba(255, 255, 255, 0.15);
+  background: rgba(189, 16, 16, 0.15);
   border-radius: 15px;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
 }
