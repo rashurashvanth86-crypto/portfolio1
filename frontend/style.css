@@ -2,7 +2,7 @@
 body {
   font-family: 'Arial', sans-serif;
 <<<<<<< HEAD
-  background: linear-gradient(135deg, rgb(23, 163, 206), #33a592);
+  background: linear-gradient(135deg, rgb(199, 88, 171), #6362ad);
 =======
   background: red(135deg, #5828a5, #121c72);
 >>>>>>> c346816a464297ad66e0e1e6949d0e9c7782c901
@@ -17,7 +17,7 @@ section {
   margin: 40px auto;
   padding: 30px;
   max-width: 600px;
-  background: rgba(189, 16, 16, 0.15);
+  background: rgba(240, 10, 10, 0.15);
   border-radius: 15px;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
 }
@@ -33,7 +33,7 @@ input, textarea {
   outline: none;
   font-size: 1rem;
   background: rgba(255, 255, 255, 0.2);
-  color: white;
+  color: rgb(255, 255, 255);
 }
 
 textarea {
